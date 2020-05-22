@@ -26,7 +26,7 @@ const TodoItem = ({todo})=>{
     }, [deleteTodoItem,todo]);
 
     return(
-        <Li check={todo.checked}>
+        <TodoItemLi check={todo.checked}>
             {
                 editFlag ? 
                 <div>
@@ -39,11 +39,11 @@ const TodoItem = ({todo})=>{
                     <Button onClick={handleDeleteTodo}/>
                 </View>
             }
-        </Li>
+        </TodoItemLi>
     );
 }
 
-const Li = styled.li`
+const TodoItemLi = styled.li`
     position:relative;
     font-size : 24px;
     border-bottom : 1px solid #ededed;

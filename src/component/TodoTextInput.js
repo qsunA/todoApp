@@ -2,11 +2,11 @@ import React, { useState, useCallback, useContext } from 'react';
 import {TodoContext} from '../store/Todo.context';
 import styled , { css } from 'styled-components';
 
-const TodoTextInput = ({todo,setEditFlag, newFlag})=>{
+const TodoTextInput = ({ todo, setEditFlag, newFlag})=>{
     const [todoText,setTodoText] = useState( (todo&& todo.todoName) || '');
     const {addTodoItem, updateTodoItem, deleteTodoItem} = useContext(TodoContext); 
     
-    const handleChange= useCallback((e)=>{
+    const handleChange= useCallback(e=>{
         setTodoText(e.target.value);
     },[]);
 
@@ -16,28 +16,28 @@ const TodoTextInput = ({todo,setEditFlag, newFlag})=>{
                 updateTodoItem({...todo, todoName:todoText});
                 setEditFlag(false);
             }else if(todoText !==''){
-                addTodoItem(todoText);                            
-                setTodoText('');
-            }else if(todo && todoText ===''){
+                addTodoItem(todoText);  
+              }else if(todo && todoText ===''){
                 deleteTodoItem(todo.id);
                 setEditFlag(false);
             }
+            setTodoText('');
         }
     },[addTodoItem,updateTodoItem,deleteTodoItem,todoText,todo, setEditFlag]);
     
     return(
-        <Input
+        <TextInput
             type="text"
             onChange={handleChange}
             onKeyDown={handleSubmit}
             value={todoText}
-            placeholder="할일을 적어주세요"
+            placeholder="할 일을 적어주세요"
             new={newFlag}
         />
     )
 }
 
-const Input = styled.input`
+const TextInput = styled.input`
     position : relative;
     margin : 0;
     width : 100%;

@@ -8,7 +8,7 @@ const FilterLink = ({children,filter}) =>{
     console.log(`visibilityFilter :${visibilityFilter}`)
 
     return(
-        <Link href="# " selected={visibilityFilter===filter} onClick={()=>setVisibilityFilter(filter)}>{children}</Link>
+        <Link href="# " data-testid={filter}  selected={visibilityFilter===filter} onClick={()=>setVisibilityFilter(filter)}>{children}</Link>
     )
 }
 

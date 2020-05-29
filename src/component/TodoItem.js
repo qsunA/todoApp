@@ -22,21 +22,22 @@ const TodoItem = ({todo})=>{
     }, [updateChecked, todo]);
 
     const handleDeleteTodo = useCallback(()=>{
+        //onRemove(todo.id)
         deleteTodoItem(todo.id);
     }, [deleteTodoItem,todo]);
 
     return(
-        <TodoItemLi check={todo.checked}>
+        <TodoItemLi >
             {
                 editFlag ? 
                 <div>
                     <TodoTextInput todo={todo} setEditFlag={setEditFlag}/>
                 </div>: 
                 <View>
-                    <Toggle type="checkbox" checked={checked} 
+                    <Toggle type="checkbox" data-testid="toggle" checked={checked} 
                     onChange={handleCheckChange}/>
-                    <Label onDoubleClick={handleDoubleClick}>{todo.todoName}</Label>
-                    <Button onClick={handleDeleteTodo}/>
+                        <Label check={todo.checked} onDoubleClick={handleDoubleClick}>{todo.todoName}</Label>
+                    <Button onClick={handleDeleteTodo} title="삭제"/>
                 </View>
             }
         </TodoItemLi>
@@ -50,14 +51,6 @@ const TodoItemLi = styled.li`
 
     &:last-child {
         border-bottom: none;
-    }
-
-    ${(props)=>
-        props.check &&
-        css`
-            color: #cdcdcd;
-            text-decoration: line-through;
-        `
     }
 
     &:hover button{
@@ -126,6 +119,16 @@ const Label = styled.label`
 	transition: color 0.4s;
 	font-weight: 400;
 	color: #4d4d4d;
+
+
+
+    ${(props) =>
+        props.check &&
+        css`
+            color: #cdcdcd;
+            text-decoration: line-through;
+        `
+    }
 `;
 
 export default TodoItem;

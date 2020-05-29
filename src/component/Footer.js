@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const FILTER_TITLES = ['All','Active', 'Completed'];
 
-const Footer = ({activeCount,completedCount, deleteCompletedTodoItem}) =>{
+const Footer = ({activeCount, deleteCompletedTodoItem}) =>{
     const itemWord = activeCount === 1 ? "item" : "items";
 
     const handleAllCheckItemDelete =  useCallback((e)=>{
@@ -25,7 +25,7 @@ const Footer = ({activeCount,completedCount, deleteCompletedTodoItem}) =>{
                     ))
                 }
             </Filters>
-            <ClearButton onClick={handleAllCheckItemDelete}  style={{float:"right"}}>test</ClearButton>
+            <ClearButton onClick={handleAllCheckItemDelete}  style={{float:"right"}}>clear</ClearButton>
              
         </TodoFooter>
     )

@@ -3,20 +3,20 @@ import TodoItem from './TodoItem.js';
 import { TodoContext } from '../store/Todo.context.js';
 import styled from 'styled-components';
 
-const TodoList = ()=>{
-    const {todos,visibilityFilter,getFilteredTodos} = useContext(TodoContext);
+const TodoList = ({todos})=>{
+    const {visibilityFilter,getFilteredTodos} = useContext(TodoContext);
     return(
-        <Ul>
+        <ListUl>
         {
             getFilteredTodos(visibilityFilter,todos).map((todo,index)=> {
                 return <TodoItem key={index} todo={todo}/>                
             })
         }
-        </Ul>
+        </ListUl>
     )
 }
 
-const Ul = styled.ul`
+const ListUl = styled.ul `
     margin : 0;
     padding : 0;
     list-style:none;

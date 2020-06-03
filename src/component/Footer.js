@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const FILTER_TITLES = ['All','Active', 'Completed'];
 
-const Footer = ({activeCount, deleteCompletedTodoItem}) =>{
+const Footer = ({activeCount, deleteCompletedTodoItem, completedCount}) =>{
     const itemWord = activeCount === 1 ? "item" : "items";
 
     const handleAllCheckItemDelete =  useCallback((e)=>{
@@ -25,7 +25,12 @@ const Footer = ({activeCount, deleteCompletedTodoItem}) =>{
                     ))
                 }
             </Filters>
-            <ClearButton onClick={handleAllCheckItemDelete}  style={{float:"right"}}>clear</ClearButton>
+            {
+                !!completedCount && (
+                    <ClearButton onClick={handleAllCheckItemDelete}  style={{float:"right"}}>clear completed</ClearButton>
+                )
+            }
+            
              
         </TodoFooter>
     )
@@ -86,13 +91,10 @@ const FilterLi = styled.li`
 
 const ClearButton = styled.button`
     float: right;
-
-    &:active{        
-        position: relative;
-        line-height: 20px;
-        text-decoration: none;
-        cursor: pointer;
-    }
+    position: relative;
+    line-height: 20px;
+    text-decoration: none;
+    cursor: pointer;
 
     &:hover{
         text-decoration: underline;

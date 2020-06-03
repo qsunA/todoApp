@@ -16,9 +16,9 @@ const MainSection = ()=>{
     return(<Section className="main">
             {
                 !!todoCount && <span>
-                    <ToggleAll type="checkbox"
+                    <ToggleAll type="checkbox" 
                     defaultChecked={completedCount === todoCount}/>
-                    <label onClick={onChangeAllCheckBox}/>
+                    <label data-testid="checkAll" onClick={onChangeAllCheckBox}/>
                 </span>
             }
             

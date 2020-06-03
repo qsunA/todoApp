@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> create 2 Todos then remove 1 item: <strong>1</strong> 1`] = `
+<strong>
+  1
+</strong>
+`;

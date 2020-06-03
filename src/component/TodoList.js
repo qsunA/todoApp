@@ -3,10 +3,10 @@ import TodoItem from './TodoItem.js';
 import { TodoContext } from '../store/Todo.context.js';
 import styled from 'styled-components';
 
-const TodoList = ({todos})=>{
-    const {visibilityFilter,getFilteredTodos} = useContext(TodoContext);
+const TodoList = ()=>{
+    const {todos,visibilityFilter,getFilteredTodos} = useContext(TodoContext);
     return(
-        <ListUl>
+        <ListUl data-testid="todoList">
         {
             getFilteredTodos(visibilityFilter,todos).map((todo,index)=> {
                 return <TodoItem key={index} todo={todo}/>                
